@@ -37,28 +37,33 @@ def enterPhoneNumber():
         enterPhoneNumber()
 
 def enterPostcode():
-    code = input("Enter your postcode: ")
+    while True:
+        code = input("Enter your postcode: ")
+        if len(code) == 0: 
+            return
 
-    def validFunc():
-        validList = []
-        validList.append(re.match("[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]",code)) # TS16 1DA
-        validList.append(re.match("[A-Z][A-Z][0-9] [0-9][A-Z][A-Z]",code)) # DT2 7EW
-        validList.append(re.match("[A-Z][0-9] [0-9][A-Z][A-Z]",code)) # W1 8BL
-        validList.append(re.match("[A-Z][0-9][0-9] [0-9][A-Z][A-Z]",code)) # C17 9DF
+        def validFunc():
+            validList = []
+            validList.append(re.match("[A-Z][A-Z][0-9][0-9] [0-9][A-Z][A-Z]",code)) # TS16 1DA
+            validList.append(re.match("[A-Z][A-Z][0-9] [0-9][A-Z][A-Z]",code)) # DT2 7EW
+            validList.append(re.match("[A-Z][0-9] [0-9][A-Z][A-Z]",code)) # W1 8BL
+            validList.append(re.match("[A-Z][0-9][0-9] [0-9][A-Z][A-Z]",code)) # C17 9DF
 
-        for x in validList:
-            if x:
-                return x
-    valid = validFunc()
-    if valid:
-        print("That looks OK")
-    else:
-        print("Erm, try again!")
-        enterPostcode()
+            for x in validList:
+                if x:
+                    return x
+        valid = validFunc()
+        if valid:
+            print("That looks OK")
+        else:
+            print("Erm, try again!")
+            enterPostcode()
+    
 
 enterName()
 enterHometown()
 enterEmail()
 enterPhoneNumber()
 
+print("Enter as many postcodes as you like, press Enter to end.")
 enterPostcode()
