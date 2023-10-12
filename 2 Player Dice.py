@@ -1,4 +1,7 @@
 import random
+import os
+
+serial = int.from_bytes(os.urandom(20), byteorder="big")
 
 playerName1 = input("Enter player 1 name")
 playerName2 = input("Enter player 2 name")
@@ -7,6 +10,9 @@ playerScore1 = 0
 playerScore2 = 0
 
 def game():
+    global playerScore1
+    global playerScore2
+
     playerScore1 = 0
     playerScore2 = 0
 
